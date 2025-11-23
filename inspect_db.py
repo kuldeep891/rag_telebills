@@ -34,14 +34,15 @@ def inspect_vector_store():
         print("Store is empty.")
         return
 
-    print("\n=== Sample Documents (First 3) ===")
-    for i in range(min(3, count)):
+    print("\n=== Last 3 Documents ===")
+    start_index = max(0, count - 3)
+    for i in range(start_index, count):
         print(f"\n[Document {i+1}]")
         print(f"ID: {data['ids'][i]}")
         print(f"Source: {data['metadatas'][i].get('source', 'Unknown')}")
         print(f"Page: {data['metadatas'][i].get('page', '?')}")
         print("-" * 40)
-        print(f"Content Preview:\n{data['documents'][i][:500]}...") # Show first 500 chars
+        print(f"Content:\n{data['documents'][i]}") # Show full content
         print("-" * 40)
 
 if __name__ == "__main__":
